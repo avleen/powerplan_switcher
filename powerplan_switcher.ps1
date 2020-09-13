@@ -29,6 +29,16 @@ function GetActivePlan {
     return $active_plan
 }
 
+function Logger {
+    param (
+        $message
+    )
+    Write-EventLog -LogName "Windows PowerShell" `
+    -Source "PowerShell" `
+    -EventId 3001 `
+    -EntryType Information `
+    -Message "$message"
+}
 # Get the UUIDs for each power plan, we need this to switch between them
 $low_plan_uuid = GetPowerPlans($low_plan_name)
 $medium_plan_uuid = GetPowerPlans($medium_plan_name)
@@ -50,16 +60,15 @@ if ($high_running -ge 1) {
     if ($active_plan -eq $high_plan_uuid) {
         exit
     }
-    Event
-    Write-Output "Changing to $high_plan_name $high_plan_uuid plan"
+    Logger("Changing to $high_plan_name plan")
     powercfg.exe /SETACTIVE $high_plan_uuid
 } elseif ($medium_running -ge 1) {
     if ($active_plan -eq $medium_plan_uuid) {
         exit
     }    
-    Write-Output "Changing to $medium_plan_name plan"
+    Logger("Changing to $medium_plan_name plan")
     powercfg.exe /SETACTIVE $medium_plan_uuid
 } elseif ($active_plan -ne $low_plan_uuid) {
-    Write-Output "Changing to $low_plan_name plan"
+    Logger("Changing to $low_plan_name plan")
     powercfg.exe /SETACTIVE $low_plan_uuid
 }
