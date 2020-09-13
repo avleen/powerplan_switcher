@@ -50,6 +50,7 @@ if ($high_running -ge 1) {
     if ($active_plan -eq $high_plan_uuid) {
         exit
     }
+    Event
     Write-Output "Changing to $high_plan_name $high_plan_uuid plan"
     powercfg.exe /SETACTIVE $high_plan_uuid
 } elseif ($medium_running -ge 1) {
