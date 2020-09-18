@@ -11,7 +11,7 @@ $medium_plan_name = "Balanced"
 $high_plan_name = "High performance"
 
 $medium_processes = "Nothing","Foo"
-$high_processes = "Lightroom","World of Warcraft"
+$high_processes = "Lightroom","Wow"
 
 # Get the list of power plans on the system
 $installed_plans = powercfg.exe /LIST
