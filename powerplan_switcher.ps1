@@ -4,14 +4,14 @@
 
 # Debug
 # Set-PSDebug -Trace 1
-
+Start-Sleep -s 5
 # Config
 $low_plan_name = "Power saver"
 $medium_plan_name = "Balanced"
 $high_plan_name = "High performance"
 
-$medium_processes = "Nothing","Foo"
-$high_processes = "Lightroom", "Nothing"
+$medium_processes = "NINA"
+$high_processes = "Lightroom", "Adobe Premiere Pro", "Wow", "DeepSkyStacker"
 
 # Get the list of power plans on the system
 $installed_plans = powercfg.exe /LIST
