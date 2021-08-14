@@ -11,7 +11,7 @@ $medium_plan_name = "Balanced"
 $high_plan_name = "High performance"
 
 $medium_processes = "NINA"
-$high_processes = "Lightroom", "Adobe Premiere Pro", "Wow", "DeepSkyStacker"
+$high_processes = "Lightroom", "Adobe Premiere Pro", "Wow", "DeepSkyStacker", "PixInsight"
 
 # Get the list of power plans on the system
 $installed_plans = powercfg.exe /LIST
